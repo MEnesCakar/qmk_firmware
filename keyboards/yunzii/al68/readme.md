@@ -3,10 +3,10 @@ Keyboard Maintainer: [Jacky](https://github.com/jackyjia73), [Enes](https://gith
 ## Special Functions
 
 1. For the knob turning functions you can use the following macros:
-   layer 0 left turn= Macro 10
-   layer 0 right turn= Macro 10
-   layer 1 left clockwise turn= Macro 12
-   layer 1 right clockwise turn= Macro 13
+   * layer 0 left turn= Macro 10
+   * layer 0 right turn= Macro 10
+   * layer 1 left clockwise turn= Macro 12
+   * layer 1 right clockwise turn= Macro 13
 
 ## Instructions
 
