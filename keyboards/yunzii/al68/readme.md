@@ -16,6 +16,6 @@ Keyboard Maintainer: [Jacky](https://github.com/jackyjia73), [Enes](https://gith
 
 ## For OpenRGB setup via Color Hoster
 
-1. Drag the ColorHoster.json into the ColorHoster.exe
-2. Create a ColorHoster.exe service for future auto startuop (optional `./ColorHoster.exe -b --port 6743 --service create`)
+1. Drag the ColorHoster.json to the folder that has ColorHoster.exe
+2. Create a ColorHoster.exe service for future auto startup (optional `./ColorHoster.exe -b --port 6743 --service create`)
 3. Listen to the port in OpenRGB using SDK Client
