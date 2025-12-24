@@ -29,11 +29,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "debug.h"
 #include "command.h"
 #include "util.h"
-#include "host.h"
 #include "sendchar.h"
 #include "eeconfig.h"
 #include "action_layer.h"
-#include "suspend.h"
 #ifdef BOOTMAGIC_ENABLE
 #    include "bootmagic.h"
 #endif
@@ -473,7 +471,6 @@ void keyboard_init(void) {
 #ifdef CONNECTION_ENABLE
     connection_init();
 #endif
-    host_init();
     led_init_ports();
 #ifdef BACKLIGHT_ENABLE
     backlight_init_ports();
@@ -564,7 +561,6 @@ void switch_events(uint8_t row, uint8_t col, bool pressed) {
 #if defined(RGB_MATRIX_ENABLE)
     rgb_matrix_handle_key_event(row, col, pressed);
 #endif
-    wakeup_matrix_handle_key_event(row, col, pressed);
 }
 
 /**
@@ -580,8 +576,6 @@ static inline void generate_tick_event(void) {
     }
 }
 
-matrix_row_t matrix_previous[MATRIX_ROWS];
-
 /**
  * @brief This task scans the keyboards matrix and processes any key presses
  * that occur.
@@ -594,6 +588,8 @@ static bool matrix_task(void) {
         generate_tick_event();
         return false;
     }
+
+    static matrix_row_t matrix_previous[MATRIX_ROWS];
 
     matrix_scan();
     bool matrix_changed = false;
@@ -628,7 +624,7 @@ static bool matrix_task(void) {
             if (row_changes & col_mask) {
                 const bool key_pressed = current_row & col_mask;
 
-                if (process_keypress && !keypress_is_wakeup_key(row, col)) {
+                if (process_keypress) {
                     action_exec(MAKE_KEYEVENT(row, col, key_pressed));
                 }
 
@@ -703,8 +699,6 @@ void quantum_task(void) {
 #ifdef LAYER_LOCK_ENABLE
     layer_lock_task();
 #endif
-
-    host_task();
 }
 
 /** \brief Main task that is repeatedly called as fast as possible. */
