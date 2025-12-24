@@ -1,4 +1,4 @@
-Keyboard Maintainer: [Jacky](https://github.com/jackyjia73), [Enes](https://github.com/MEnesCakar), [Ryan](https://github.com/ElCyborg)
+Keyboard Maintainer: [Enes](https://github.com/MEnesCakar), [Ryan](https://github.com/ElCyborg), [Jacky](https://github.com/jackyjia73)
 
 ## Special Functions
 
