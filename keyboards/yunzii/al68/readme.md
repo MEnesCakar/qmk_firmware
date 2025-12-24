@@ -4,13 +4,13 @@ Keyboard Maintainer: [Enes](https://github.com/MEnesCakar), [Ryan](https://githu
 
 1. For the knob turning functions you can use the following macros:
    * layer 0 left turn= Macro 10
-   * layer 0 right turn= Macro 10
+   * layer 0 right turn= Macro 11
    * layer 1 left clockwise turn= Macro 12
    * layer 1 right clockwise turn= Macro 13
 
 ## Instructions
 
-1. To compile qmk compile --clean -kb yunzii/al68 -km via (Use QMK MSYS))
+1. To compile `qmk compile --clean -kb yunzii/al68 -km via` (in QMK MSYS))
 2. To flash you need to go into bootloader mode (hold left ctrl + escape while plugging in) in wired mode. (Easier in QMK Toolbox))
 3. You need to use the design json named VIA.json which can be found in this folder for VIA functions. (Use Wired Mode)
 
