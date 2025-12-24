@@ -125,12 +125,11 @@ def generate_encoder_config(encoder_json, config_h_lines, postfix=''):
     config_h_lines.append(generate_define(f'ENCODER_A_PINS{postfix}', f'{{ {", ".join(a_pads)} }}'))
     config_h_lines.append(generate_define(f'ENCODER_B_PINS{postfix}', f'{{ {", ".join(b_pads)} }}'))
 
-    if len(resolutions) == 0 or all(r is None for r in resolutions):
+    if None in resolutions:
+        cli.log.debug(f"Unable to generate ENCODER_RESOLUTION{postfix} configuration")
+    elif len(resolutions) == 0:
         cli.log.debug(f"Skipping ENCODER_RESOLUTION{postfix} configuration")
-        return
-
-    resolutions = [4 if r is None else r for r in resolutions]
-    if len(set(resolutions)) == 1:
+    elif len(set(resolutions)) == 1:
         config_h_lines.append(generate_define(f'ENCODER_RESOLUTION{postfix}', resolutions[0]))
     else:
         config_h_lines.append(generate_define(f'ENCODER_RESOLUTIONS{postfix}', f'{{ {", ".join(map(str,resolutions))} }}'))

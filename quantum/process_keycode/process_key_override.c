@@ -39,8 +39,7 @@
 #    define key_override_printf dprintf
 #else
 #    define key_override_printf(str, ...) \
-        {                                 \
-        }
+        {}
 #endif
 
 // Helpers
